@@ -10,6 +10,7 @@
   "author": "JacksonBates",
   "license": "MIT",
   "dependencies": {
+    "adm-zip": "^0.4.7",
     "url-parse": "^1.1.9",
     "x-ray": "^2.3.2"
   }
