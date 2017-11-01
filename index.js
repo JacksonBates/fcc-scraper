@@ -1,7 +1,9 @@
 const fs = require('fs');
+const stat = fs.statSync;
 const Xray = require('x-ray');
 const parse = require('url-parse');
 const x = Xray();
+const AdmZip = require('adm-zip');
 
 /**
  * @requires NPM:x-ray
@@ -55,6 +57,12 @@ const writeFile = (fileObject) => {
     fs.writeFileSync(`./solutions/${challenge}.js`, solution);
 }
 
+const newArchive = (zipFileName, pathName) => {
+    const zip = new AdmZip();
+    zip.addLocalFolder(pathName, pathName);
+    zip.writeZip(zipFileName);
+}
+
 const writeSolutions = () => {
     buildLinkList('jacksonbates')
         .then((links) => {
@@ -62,7 +70,8 @@ const writeSolutions = () => {
                 // console.log(link);
                 writeFile(getSolution(link));
             }
-        });
+        })
+        .then(newArchive(`jacksonbates-archive-${+new Date}.zip`, 'solutions'));
     }
 
 writeSolutions();
