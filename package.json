@@ -1,0 +1,16 @@
+{
+  "name": "fcc-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes FCC profiles to download a zip of solutions, with a descriptive readme attached explaining how to upload to github",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JacksonBates",
+  "license": "MIT",
+  "dependencies": {
+    "url-parse": "^1.1.9",
+    "x-ray": "^2.3.2"
+  }
+}
