@@ -2,6 +2,7 @@ const readline = require('readline');
 const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
+const clear = require('clear');
 const Xray = require('x-ray');
 const parse = require('url-parse');
 const x = Xray();
@@ -101,7 +102,8 @@ const writeSolutions = (camper) => {
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-    });
+});
+clear();
 rl.question('Please enter the username to scrape: ', (camper) => {
     writeSolutions(camper);
     rl.close();
