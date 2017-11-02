@@ -1,5 +1,6 @@
 const fs = require('fs');
 const stat = fs.statSync;
+const path = require('path');
 const Xray = require('x-ray');
 const parse = require('url-parse');
 const x = Xray();
@@ -57,14 +58,25 @@ const writeFile = (fileObject, count) => {
     }
     fs.writeFileSync(`./solutions/${challenge}.js`, solution);
     const dirArray = fs.readdirSync(dir);
+    
     if (dirArray.length === count) {
-        newArchive(`jacksonbates-archive-${+new Date}.zip`, 'solutions');
+        newArchive(`jacksonbates-archive-${+new Date}.zip`, dirArray);
     }
 }
 
-const newArchive = (zipFileName, pathName) => {
+const newArchive = (zipFileName, pathNames) => {
     const zip = new AdmZip();
-    zip.addLocalFolder(pathName, pathName);
+    
+    pathNames.forEach(target => {
+    target = path.join('./solutions', target);
+    const p = stat(target);
+        if (p.isFile()) {
+            zip.addLocalFile(target);
+        } else if (p.isDirectory()) {
+            zip.addLocalFolder(target, target);
+        }
+    });
+
     zip.writeZip(zipFileName);
 }
 
