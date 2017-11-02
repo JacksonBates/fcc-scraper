@@ -8,6 +8,7 @@ const parse = require('url-parse');
 const x = Xray();
 const yazl = require('yazl');
 const rimraf = require('rimraf');
+const isHtml = require('is-html');
 
 /**
  * @requires NPM:x-ray
@@ -60,7 +61,7 @@ const writeFile = (fileObject, count, camper) => {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-    fs.writeFileSync(`./solutions/${challenge}.js`, solution);
+    fs.writeFileSync(`./solutions/${challenge}${isHtml(solution) ? '.html' : '.js'}`, solution);
     const dirArray = fs.readdirSync(dir);
     if (dirArray.length === count) {
         newArchive(`${camper}-archive-${+new Date}.zip`, dirArray);

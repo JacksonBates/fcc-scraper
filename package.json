@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "clear": "0.0.1",
+    "is-html": "^1.1.0",
     "rimraf": "^2.6.2",
     "url-parse": "^1.1.9",
     "x-ray": "^2.3.2",
