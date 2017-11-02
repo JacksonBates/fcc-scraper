@@ -33,8 +33,9 @@ const buildLinkList = (username) => {
 
 
 /**
+ * Parses the URLs from the hrefs to obtain the challenge name and solution
  * @requires NPM:url-parse
- * @param {string} url
+ * @param {string} url The unparsed URL string scrpaed from freeCodeCamp profile
  * @returns {object} Object containing the name of the challenge and the solution from freeCodeCamp challenge solution links
  */
 const getSolution = (url) => {
@@ -50,8 +51,10 @@ const getSolution = (url) => {
 /**
  * Writes solution files to a solutions folder
  * @requires 'fs'
+ * @requires NPM:isHtml
  * @param {object} fileObject Object must contain valid 'challenge' and 'solution' keys
  * @param {int} count Number of files to be zipped
+ * @param {string} camper The username of the camper to be scraped - taken from rl.question at the bottom of the file
  * @returns undefined
  */
 const writeFile = (fileObject, count, camper) => {
@@ -70,6 +73,8 @@ const writeFile = (fileObject, count, camper) => {
 
 /**
  * Creates a zip file based on the contents of the solutions folder
+ * @requires 'fs'
+ * @requires NPM:yazl
  * @param {string} zipFileName The name of the output zipfile 
  * @param {array} pathNames An array of all filenames to be zipped
  */
@@ -87,7 +92,7 @@ const newArchive = (zipFileName, pathNames) => {
         console.log(`
         I zipped it real good!
         
-        You can collect your zipped archive from the fcc-scrape directory.
+        You can collect your zipped archive from the fcc-scraper directory.
         
         *If you found this useful, star the JacksonBates/fcc-scraper repo on GitHub*
         Twitter, Instagram and FCC forum: @jacksonbates
