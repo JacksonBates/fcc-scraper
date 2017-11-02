@@ -20,7 +20,8 @@ const buildLinkList = (username) => {
                         linkList.push(link);
                     } 
                 }
-                resolve(linkList)
+                const linkListDeDuped = Array.from(new Set(linkList));
+                resolve(linkListDeDuped);
             });
     })
 };
@@ -47,7 +48,7 @@ const getSolution = (url) => {
  * @param {object} fileObject Object must contain valid 'challenge' and 'solution' keys
  * @returns null
  */
-const writeFile = (fileObject) => {
+const writeFile = (fileObject, count) => {
     const challenge = fileObject.challenge.replace(/%20/g, '-');
     const solution = fileObject.solution;
     const dir = './solutions';
@@ -55,6 +56,10 @@ const writeFile = (fileObject) => {
         fs.mkdirSync(dir);
     }
     fs.writeFileSync(`./solutions/${challenge}.js`, solution);
+    const dirArray = fs.readdirSync(dir);
+    if (dirArray.length === count) {
+        newArchive(`jacksonbates-archive-${+new Date}.zip`, 'solutions');
+    }
 }
 
 const newArchive = (zipFileName, pathName) => {
@@ -66,12 +71,13 @@ const newArchive = (zipFileName, pathName) => {
 const writeSolutions = () => {
     buildLinkList('jacksonbates')
         .then((links) => {
+            const count = links.length;
+            console.log('number of links', count);
             for (let link of links) {
                 // console.log(link);
-                writeFile(getSolution(link));
+                writeFile(getSolution(link), count);
             }
-        })
-        .then(newArchive(`jacksonbates-archive-${+new Date}.zip`, 'solutions'));
+        });
     }
 
 writeSolutions();
