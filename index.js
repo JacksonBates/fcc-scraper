@@ -82,7 +82,7 @@ const newArchive = (zipFileName, pathNames) => {
             }
     });
     zipfile.outputStream.pipe(fs.createWriteStream(zipFileName)).on("close", () => {
-        console.log('zipped it real good!/nYou can collect your zipped archive from the fcc-scrape directory');
+        console.log('zipped it real good!\nYou can collect your zipped archive from the fcc-scrape directory');
         rimraf.sync('./solutions');
       });
     zipfile.end();
