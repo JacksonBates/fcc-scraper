@@ -58,8 +58,8 @@ const writeFile = (fileObject, count) => {
     }
     fs.writeFileSync(`./solutions/${challenge}.js`, solution);
     const dirArray = fs.readdirSync(dir);
-    
     if (dirArray.length === count) {
+        console.log(dirArray[0]);
         newArchive(`jacksonbates-archive-${+new Date}.zip`, dirArray);
     }
 }
@@ -68,13 +68,14 @@ const newArchive = (zipFileName, pathNames) => {
     const zip = new AdmZip();
     
     pathNames.forEach(target => {
-    target = path.join('./solutions', target);
-    const p = stat(target);
+    const joinedTarget = path.join('./solutions/', target);
+    const p = stat(joinedTarget);
         if (p.isFile()) {
-            zip.addLocalFile(target);
-        } else if (p.isDirectory()) {
-            zip.addLocalFolder(target, target);
+            zip.addLocalFile(joinedTarget);
         }
+            // } else if (p.isDirectory()) {
+        //     zip.addLocalFolder(target, target);
+        // }
     });
 
     zip.writeZip(zipFileName);
@@ -84,7 +85,7 @@ const writeSolutions = () => {
     buildLinkList('jacksonbates')
         .then((links) => {
             const count = links.length;
-            console.log('number of links', count);
+            // console.log('number of links', count);
             for (let link of links) {
                 // console.log(link);
                 writeFile(getSolution(link), count);
