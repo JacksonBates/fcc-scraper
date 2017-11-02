@@ -1,3 +1,4 @@
+const readline = require('readline');
 const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
@@ -51,7 +52,7 @@ const getSolution = (url) => {
  * @param {int} count Number of files to be zipped
  * @returns undefined
  */
-const writeFile = (fileObject, count) => {
+const writeFile = (fileObject, count, camper) => {
     const challenge = fileObject.challenge.replace(/%20/g, '-');
     const solution = fileObject.solution;
     const dir = './solutions';
@@ -61,7 +62,7 @@ const writeFile = (fileObject, count) => {
     fs.writeFileSync(`./solutions/${challenge}.js`, solution);
     const dirArray = fs.readdirSync(dir);
     if (dirArray.length === count) {
-        newArchive(`jacksonbates-archive-${+new Date}.zip`, dirArray);
+        newArchive(`${camper}-archive-${+new Date}.zip`, dirArray);
     }
 }
 
@@ -81,20 +82,27 @@ const newArchive = (zipFileName, pathNames) => {
             }
     });
     zipfile.outputStream.pipe(fs.createWriteStream(zipFileName)).on("close", () => {
-        console.log('zipped it real good!');
+        console.log('zipped it real good!/nYou can collect your zipped archive from the fcc-scrape directory');
         rimraf.sync('./solutions');
       });
     zipfile.end();
 }
 
-const writeSolutions = () => {
-    buildLinkList('jacksonbates')
+const writeSolutions = (camper) => {
+    buildLinkList(camper)
         .then((links) => {
             const count = links.length;
             for (let link of links) {
-                writeFile(getSolution(link), count);
+                writeFile(getSolution(link), count, camper);
             }
         });
     }
 
-writeSolutions();
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+    });
+rl.question('Please enter the username to scrape: ', (camper) => {
+    writeSolutions(camper);
+    rl.close();
+});
