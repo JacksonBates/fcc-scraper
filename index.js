@@ -84,7 +84,14 @@ const newArchive = (zipFileName, pathNames) => {
             }
     });
     zipfile.outputStream.pipe(fs.createWriteStream(zipFileName)).on("close", () => {
-        console.log('zipped it real good!\nYou can collect your zipped archive from the fcc-scrape directory');
+        console.log(`
+        I zipped it real good!
+        
+        You can collect your zipped archive from the fcc-scrape directory.
+        
+        *If you found this useful, star the JacksonBates/fcc-scraper repo on GitHub*
+        Twitter, Instagram and FCC forum: @jacksonbates
+        `);
         rimraf.sync('./solutions');
       });
     zipfile.end();
@@ -107,5 +114,24 @@ const rl = readline.createInterface({
 clear();
 rl.question('Please enter the username to scrape: ', (camper) => {
     writeSolutions(camper);
+    console.log(`
+        ***          **             ***     
+       **            ***              **    
+      **             ****              **   
+     **              ****  **           **  
+    **              *****  **           *** 
+    **              **********           ** 
+    **             ***** *****           ** 
+    **            *****  *****           ***
+    **            ****   *****           ***
+    **            ***       *            ** 
+    **             **      **            ** 
+    ***             *                    ** 
+     **              *                  **  
+      **                               **   
+       **        ***************      **    
+        ***                         ***     
+          *                         *       
+    `);
     rl.close();
 });
