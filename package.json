@@ -10,8 +10,9 @@
   "author": "JacksonBates",
   "license": "MIT",
   "dependencies": {
-    "adm-zip": "^0.4.7",
+    "rimraf": "^2.6.2",
     "url-parse": "^1.1.9",
-    "x-ray": "^2.3.2"
+    "x-ray": "^2.3.2",
+    "yazl": "^2.4.3"
   }
 }
