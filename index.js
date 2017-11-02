@@ -39,7 +39,7 @@ const buildLinkList = (username) => {
 const getSolution = (url) => {
     const data = parse(url, true);
     const challenge = data.pathname.replace(/\/challenges\//, '');
-    const solution = data.query.solution;
+    const solution = data.query.solution.replace(/fccss/, '<script>').replace(/fcces/, '</script>');
     return {
         challenge,
         solution
