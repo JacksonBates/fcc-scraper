@@ -2,6 +2,12 @@ const readline = require('readline');
 const clear = require('clear');
 
 const scraper = require('./scraper');
+const printLogo = require('./printLogo');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 const writeSolutions = (camper) => {
     scraper.buildLinkList(camper)
@@ -13,31 +19,10 @@ const writeSolutions = (camper) => {
         });
     }
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 clear();
 rl.question('Please enter the username to scrape: ', (camper) => {
     writeSolutions(camper);
-    console.log(`
-        ***          **             ***
-       **            ***              **
-      **             ****              **
-     **              ****  **           **
-    **              *****  **           ***
-    **              **********           **
-    **             ***** *****           **
-    **            *****  *****           ***
-    **            ****   *****           ***
-    **            ***       *            **
-    **             **      **            **
-    ***             *                    **
-     **              *                  **
-      **                               **
-       **        ***************      **
-        ***                         ***
-          *                         *
-    `);
+
+    printLogo();
     rl.close();
 });
