@@ -12,6 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "clear": "0.0.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-zip": "^2.0.1",
     "is-html": "^1.1.0",
     "rimraf": "^2.6.2",
     "url-parse": "^1.1.9",
