@@ -16,7 +16,7 @@ npm install
 ## Usage
 
 `npm start` will prompt you for your username.
+
 `npm run flush` will remove all `.zip` files from the fcc-scraper folder (just to keep things tidy if you un it often).
 
-Once you have been instructed that the archive is ready, you can find the `.zip` folder in the fcc-scraper directory.
 
