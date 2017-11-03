@@ -5,6 +5,7 @@
 
 const Xray = require('x-ray');
 const x = Xray();
+const parse = require('url-parse');
 
 module.exports = {
 
@@ -27,6 +28,22 @@ module.exports = {
               resolve(linkListDeDuped);
           });
       });
+  },
+
+  /**
+   * Parses the URLs from the hrefs to obtain the challenge name and solution
+   * @requires NPM:url-parse
+   * @param {string} url The unparsed URL string scrpaed from freeCodeCamp profile
+   * @returns {object} Object containing the name of the challenge and the solution from freeCodeCamp challenge solution links
+   */
+  getSolution(url) {
+      const data = parse(url, true);
+      const challenge = data.pathname.replace(/\/challenges\//, '');
+      const solution = data.query.solution.replace(/fccss/, '<script>').replace(/fcces/, '</script>');
+      return {
+          challenge,
+          solution
+      };
   },
 
 };

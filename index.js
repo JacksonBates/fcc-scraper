@@ -3,28 +3,12 @@ const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
 const clear = require('clear');
-const parse = require('url-parse');
 const yazl = require('yazl');
 const rimraf = require('rimraf');
 const isHtml = require('is-html');
 
 const scraper = require('./scraper');
 
-/**
- * Parses the URLs from the hrefs to obtain the challenge name and solution
- * @requires NPM:url-parse
- * @param {string} url The unparsed URL string scrpaed from freeCodeCamp profile
- * @returns {object} Object containing the name of the challenge and the solution from freeCodeCamp challenge solution links
- */
-const getSolution = (url) => {
-    const data = parse(url, true);
-    const challenge = data.pathname.replace(/\/challenges\//, '');
-    const solution = data.query.solution.replace(/fccss/, '<script>').replace(/fcces/, '</script>');
-    return {
-        challenge,
-        solution
-    };
-}
 
 /**
  * Writes solution files to a solutions folder
@@ -85,7 +69,7 @@ const writeSolutions = (camper) => {
         .then((links) => {
             const count = links.length;
             for (let link of links) {
-                writeFile(getSolution(link), count, camper);
+                writeFile(scraper.getSolution(link), count, camper);
             }
         });
     }
