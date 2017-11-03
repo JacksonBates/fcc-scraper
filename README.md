@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Nodejs and NPM should be installed prior to installing the scraper tool.
+Nodejs (v8.3.0) and NPM should be installed prior to installing the scraper tool.
 If you want to download the scraper from GitHub via the command line, you'll also need Git installed - otherwise you can manually download from the GitHub page.
 
 ## Installation
