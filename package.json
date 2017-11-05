@@ -4,7 +4,7 @@
   "description": "Scrapes FCC profiles to download a zip of solutions, with a descriptive readme attached explaining how to upload to github",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "flush": "rm *.zip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
