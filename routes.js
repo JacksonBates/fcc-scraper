@@ -31,7 +31,7 @@ router.get('/:camper', (req, res) => {
           // }
         })
       .then(() => {
-        wait(500, () => {
+        wait(5000, () => {
           console.log('bout to send');
           res.download(`${__dirname}/${camper}.zip`);
         });
