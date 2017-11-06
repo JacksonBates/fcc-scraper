@@ -3,7 +3,8 @@ const rimraf = require('rimraf');
 const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
-const cwd = process.env.PWD || '.';
+const cwd = `${process.env.PWD}/public` || 'public';
+console.log(cwd);
 
 module.exports = (zipFileName, pathNames, camper) => {
   const zipfile = new yazl.ZipFile();
@@ -15,7 +16,7 @@ module.exports = (zipFileName, pathNames, camper) => {
               zipfile.addFile(joinedTarget, joinedTarget);
           }
   });
-  zipfile.outputStream.pipe(fs.createWriteStream(`${cwd}/public/${zipFileName}`)).on("close", () => {
+  zipfile.outputStream.pipe(fs.createWriteStream(`${cwd}/${zipFileName}`)).on("close", () => {
       console.log('Zip complete.');
       rimraf.sync(`./solutions-${camper}`); 
     });
