@@ -3,8 +3,9 @@ const rimraf = require('rimraf');
 const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
-const cwd = `${process.env.PWD}/public` || 'public';
-console.log(cwd);
+// const cwd = `${process.env.PWD}/public` || 'public';
+const cwd = 'public';
+// console.log(cwd);
 
 module.exports = (zipFileName, pathNames, camper) => {
   const zipfile = new yazl.ZipFile();
