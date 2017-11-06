@@ -27,35 +27,17 @@ router.get('/:camper', (req, res) => {
           links.forEach((link) => {
               writeFile(getSolution(link), count, camper);
           });
-          //     writeFile(getSolution(link), count, camper);
-          // }
         })
       .then(() => {
         wait(5000, () => {
           console.log('bout to send');
           res.download(`${__dirname}/${camper}.zip`);
         });
-        // wait(1000, () => {
-        //   console.log('see ya');
-        //   res.end();
-        //   res.redirect('/');
-        // });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.render('pages/bad');
       });
-        // for (let link of links) {
-  // const zipFileName = await getSolutionZip(camper);
-  // res.sendFile(`${__dirname}/${zipFileName}`);
 })
-
-router.get('/test', (req, res) => {
-  res.zip([
-    {path: './test.file', name: './test.file'}
-  ]);
-});
-
-router.get('/send', (req, res) => {
-  res.sendFile(__dirname + '/test.file', {
-
-  });
-});
 
 module.exports = router;

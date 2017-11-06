@@ -5,6 +5,7 @@ module.exports = (camper) => {
   return new Promise((resolve, reject) => {
     let linkList = [];
     x(`https://freecodecamp.org/${camper}`, ['a@href'])((err, data) => {
+        if (err) console.log('Error in buildLinkList', err);
         let links = data.toString().split(',');
         for (let link of links) {
             if (link.match(/\?solution=/)) {
@@ -12,7 +13,7 @@ module.exports = (camper) => {
             } 
         }
         const linkListDeDuped = Array.from(new Set(linkList));
-        resolve(linkListDeDuped);
+        (linkListDeDuped.length > 0) ? resolve(linkListDeDuped) : reject('Camper not found');
     });
 })
 }
