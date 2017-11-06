@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cwd = process.env.PWD || __dirname;
+console.log('server cwd', cwd)
 
 app.use(express.static(path.join(cwd, '/public')));
 app.use('/', require('./routes'));

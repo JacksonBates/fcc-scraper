@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Scrapes FCC profiles to download a zip of solutions, with a descriptive readme attached explaining how to upload to github",
   "main": "index.js",
+  "engines": {
+    "node": "8.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "flush": "rm *.zip && cd public\/ && rm *.zip && cd ..",
