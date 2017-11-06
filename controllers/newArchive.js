@@ -14,7 +14,7 @@ module.exports = (zipFileName, pathNames, camper) => {
               zipfile.addFile(joinedTarget, joinedTarget);
           }
   });
-  zipfile.outputStream.pipe(fs.createWriteStream(`public/${zipFileName}`)).on("close", () => {
+  zipfile.outputStream.pipe(fs.createWriteStream(`./public/${zipFileName}`)).on("close", () => {
       console.log('Zip complete.');
       rimraf.sync(`./solutions-${camper}`); 
     });
