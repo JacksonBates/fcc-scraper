@@ -4,11 +4,11 @@ const fs = require('fs');
 const stat = fs.statSync;
 const path = require('path');
 
-module.exports = (zipFileName, pathNames) => {
+module.exports = (zipFileName, pathNames, camper) => {
   const zipfile = new yazl.ZipFile();
   
   pathNames.forEach(target => {
-      const joinedTarget = path.join('./solutions/', target);//TODO:solutions should be unique again
+      const joinedTarget = path.join(`./solutions-${camper}/`, target);
       const p = stat(joinedTarget);
           if (p.isFile()) {
               zipfile.addFile(joinedTarget, joinedTarget);
@@ -16,7 +16,7 @@ module.exports = (zipFileName, pathNames) => {
   });
   zipfile.outputStream.pipe(fs.createWriteStream(zipFileName)).on("close", () => {
       console.log('Zip complete.');
-      rimraf.sync('./solutions'); //TODO:this should be the same as above
+      rimraf.sync(`./solutions-${camper}`); 
     });
   zipfile.end();
 }

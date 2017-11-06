@@ -6,13 +6,13 @@ const newArchive = require('./newArchive');
 module.exports = (fileObject, count, camper) => {
     const challenge = fileObject.challenge.replace(/%20/g, '-');
     const solution = fileObject.solution;
-    const dir = './solutions'; //TODO:unique dir to avoid clashes
+    const dir = `./solutions-${camper}`;
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-    fs.writeFileSync(`./solutions/${challenge}${isHtml(solution) ? '.html' : '.js'}`, solution);
+    fs.writeFileSync(`${dir}/${challenge}${isHtml(solution) ? '.html' : '.js'}`, solution);
     const dirArray = fs.readdirSync(dir);
     if (dirArray.length === count) {
-        newArchive(`${camper}.zip`, dirArray);
+        newArchive(`${camper}.zip`, dirArray, camper);
     }
 }
