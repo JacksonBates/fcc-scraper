@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "flush": "rm *.zip && cd public\/ && rm *.zip && cd ..",
+    "flush": "rm *.zip && cd public/ && rm *.zip && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JacksonBates",
