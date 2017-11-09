@@ -1,5 +1,7 @@
 # freeCodeCamp Solution Archiver
 
+This is the cli version of the tool. If you are looking for the web-based version, switch to the MASTER branch.
+
 ## Requirements
 
 Nodejs and NPM should be installed prior to installing the scraper tool.
