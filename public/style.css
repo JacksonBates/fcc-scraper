@@ -1,0 +1,10 @@
+.navbar__bar {
+    background-color: #006400;
+}
+
+.navbar__font {
+    font-size:2em;
+}
+.navbar__font:link, .navbar__font:visited, .navbar__font:hover, .navbar__font:active {
+    color: #fff;
+} 

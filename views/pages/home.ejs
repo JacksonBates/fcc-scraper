@@ -1,6 +1,40 @@
-<form>
-  <label for="username">
-    <input type="text" name="username" id="username">
-  </label>
-  <button>Submit</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>freeCodeCamp Solutions Archiver | Download Campers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="description" content="Download an archive of your freeCodeCamp Solutions here.">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body> 
+    <nav class="navbar navbar__bar">
+      <a class="navbar-brand navbar__font" href="/">freeCodeCamp <i class="fa fa-free-code-camp"></i></a>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">freeCodeCamp Solution Downloader</h1>
+        <p class="lead">You can use this simple utility to dowload all of your code snippets from freeCodeCamp.</p>
+        <hr class="my-4">
+        <p>Enter your username in the field below, and your download link will be ready in a few seconds.</p>
+        <form>
+          <div class="form-group d-flex justify-content-center">
+            <div class="d-flex flex-column">
+              <label for="username" class="form-text">Enter your freeCodeCamp username:</label>
+              <input 
+                class="form-control"
+                type="text" 
+                name="username" 
+                id="username"
+                placeholder="e.g. Camper"
+              >
+              <button type="submit" class="btn btn-outline-success btn-block">Get Download Link</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
