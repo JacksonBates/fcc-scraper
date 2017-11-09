@@ -1,0 +1,36 @@
+body {
+    background-color: #E9ECEF;
+}
+
+.navbar__bar {
+    background-color: #006400;
+}
+
+.navbar__font {
+    font-size:1.5em;
+}
+.navbar__font:link, .navbar__font:visited, .navbar__font:hover, .navbar__font:active {
+    color: #fff;
+} 
+
+.btn-download {
+    color: #006400;
+    background-color: transparent;
+    background-image: none;
+    border-color: #006400;
+    margin-top: .3rem;
+}
+
+.jumbotron__h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.twitter-follow-button {
+    margin: .15rem .3rem !important;
+}
+
+#widget {
+    margin: .15rem .3rem !important;
+}

@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "Scrapes FCC profiles to download a zip of solutions, with a descriptive readme attached explaining how to upload to github",
   "main": "index.js",
+  "engines": {
+    "node": "8.0.0"
+  },
   "scripts": {
-    "start": "node index.js",
-    "flush": "rm *.zip",
+    "start": "node server.js",
+    "flush": "rm *.zip && cd public/ && rm *.zip && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JacksonBates",
   "license": "MIT",
   "dependencies": {
     "clear": "0.0.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-zip": "^2.0.1",
     "is-html": "^1.1.0",
     "rimraf": "^2.6.2",
     "url-parse": "^1.1.9",
+    "wait": "^0.1.0",
     "x-ray": "^2.3.2",
     "yazl": "^2.4.3"
   }
