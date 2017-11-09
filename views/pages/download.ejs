@@ -1,1 +1,42 @@
-<a href='<%= link %>'>Download you solutions here.</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>freeCodeCamp Solutions Archiver | Download Campers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="description" content="Download an archive of your freeCodeCamp Solutions here.">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body> 
+    <nav class="navbar navbar__bar">
+      <a class="navbar-brand navbar__font" href="/">freeCodeCamp <i class="fa fa-free-code-camp"></i></a>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="jumbotron__h1">Here's your archive!</h1>
+        <a href='<%= link %>' class="btn btn-download d-flex justify-content-center">Download</a>
+        <hr class="my-4">
+        <p>If you found this useful, please star the repo on GitHub and or on Twitter for developer and freeCodeCamp related tweets.</p>
+         <div class='d-flex align-content-between justify-content-center flex-wrap'> 
+          <a 
+            href="https://twitter.com/JacksonBates?ref_src=twsrc%5Etfw" 
+            class="twitter-follow-button" 
+            data-show-count="true"
+            data-size="large"
+          >
+          Follow @JacksonBates
+          </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <iframe 
+            src="https://ghbtns.com/github-btn.html?user=jacksonbates&repo=fcc-scraper&type=star&count=true&size=large" 
+            frameborder="0" 
+            scrolling="0" 
+            width="160px" 
+            height="30px"
+          ></iframe>  
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
