@@ -23,7 +23,7 @@ const buildLinkList = (username) => {
             for (let link of links) {
                 if (link.match(/\?solution=/)) {
                     linkList.push(link);
-                } 
+                }
             }
             const linkListDeDuped = Array.from(new Set(linkList));
             resolve(linkListDeDuped);
@@ -58,7 +58,7 @@ const getSolution = (url) => {
  * @returns undefined
  */
 const writeFile = (fileObject, count, camper) => {
-    const challenge = fileObject.challenge.replace(/%20/g, '-');
+    const challenge = fileObject.challenge
     const solution = fileObject.solution;
     const dir = './solutions';
     if (!fs.existsSync(dir)) {
@@ -75,12 +75,12 @@ const writeFile = (fileObject, count, camper) => {
  * Creates a zip file based on the contents of the solutions folder
  * @requires 'fs'
  * @requires NPM:yazl
- * @param {string} zipFileName The name of the output zipfile 
+ * @param {string} zipFileName The name of the output zipfile
  * @param {array} pathNames An array of all filenames to be zipped
  */
 const newArchive = (zipFileName, pathNames) => {
     const zipfile = new yazl.ZipFile();
-    
+
     pathNames.forEach(target => {
         const joinedTarget = path.join('./solutions/', target);
         const p = stat(joinedTarget);
@@ -91,9 +91,9 @@ const newArchive = (zipFileName, pathNames) => {
     zipfile.outputStream.pipe(fs.createWriteStream(zipFileName)).on("close", () => {
         console.log(`
         I zipped it real good!
-        
+
         You can collect your zipped archive from the fcc-scraper directory.
-        
+
         *If you found this useful, star the JacksonBates/fcc-scraper repo on GitHub*
         Twitter, Instagram and FCC forum: @jacksonbates
         `);
@@ -120,23 +120,23 @@ clear();
 rl.question('Please enter the username to scrape: ', (camper) => {
     writeSolutions(camper);
     console.log(`
-        ***          **             ***     
-       **            ***              **    
-      **             ****              **   
-     **              ****  **           **  
-    **              *****  **           *** 
-    **              **********           ** 
-    **             ***** *****           ** 
+        ***          **             ***
+       **            ***              **
+      **             ****              **
+     **              ****  **           **
+    **              *****  **           ***
+    **              **********           **
+    **             ***** *****           **
     **            *****  *****           ***
     **            ****   *****           ***
-    **            ***       *            ** 
-    **             **      **            ** 
-    ***             *                    ** 
-     **              *                  **  
-      **                               **   
-       **        ***************      **    
-        ***                         ***     
-          *                         *       
+    **            ***       *            **
+    **             **      **            **
+    ***             *                    **
+     **              *                  **
+      **                               **
+       **        ***************      **
+        ***                         ***
+          *                         *
     `);
     rl.close();
 });
